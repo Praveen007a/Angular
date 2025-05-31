@@ -44,6 +44,60 @@
       </div>
     </div>
   </div>
+
+  <div class="ngfor-app">
+    <h1>Ng For Strucural Directives</h1>
+    <ul>
+      <li  *ngFor="let movie of movies; let isEven = even; let isOdd = odd;" [ngClass]="{'even-item': isEven, 'odd-item': isOdd }" style="margin-bottom: 10px; padding: 10px;">{{movie.name}}</li>
+    </ul>
+
+      <ul>
+        <li *ngFor="let i=index; let num of numbers">{{i+1}}</li>
+      </ul>
+  </div>
+
+  <!-- Ngif -->
+   <div>
+    <h1 style="text-align: center;">Are you 18 years completed ?</h1>
+
+    <div style="display: flex; justify-content: center; align-items: center;" >
+        <label for="yes">Select if yes</label>
+        <input type="checkbox" id="yes" [(ngModel)]="showDetails" style="margin: 10px;">
+    </div>
+      <h1 *ngIf="showDetails" style="text-align: center;">Welcome !</h1>
+
+    <div style="display: flex; justify-content: center; align-items: center;" >
+        <label for="red">Apply Red ?</label>
+        <input type="checkbox" id="red" [(ngModel)]="isRed" style="margin: 10px;">
+    </div>
+
+    <div style="display: flex; justify-content: center; align-items: center;" >
+        <label [ngStyle]="{'font-size':'20px'}" for="big">Increase Font Size ?</label>
+        <input type="checkbox" id="big" [(ngModel)]="isBig" style="margin: 10px;">
+    </div>
+    <h1 [ngClass]="{'big':isBig, 'red':isRed}  " style="text-align: center;">PRAVEEN D</h1>
+
+   </div>
+   <!-- Custom directives -->
+    <div style="display: flex; justify-content: center; align-items: center;" >
+        <p [appHighlight]="'red'">Custom Directive with default color</p>
+        <h1 [appHighlight]="''">Custom Directive with blue color</h1>
+    </div>
+
+    <h1 style="text-align: center;">Pipes</h1>
+    <div style="display: flex; justify-content: center; align-items: center; flex-direction: column;" >
+      <p><strong>Today Date is: </strong> {{today_date | date}}</p>
+        <p>My name is {{fullName | uppercase}}</p>
+        <p>My name is {{fullName | lowercase}}</p>
+        <p>My name is {{fullName | titlecase}}</p>
+        <p>My name is {{fullName | slice:0:5}}</p>
+        <p>My name is {{fullName | slice:5}}</p>
+        <p>My name is {{fullName | slice:-5}}</p>
+        <p>My name is {{fullName | slice:-5:-2}}</p>
+        <p>Default price is: {{price | currency}}</p>
+        <p>Indian Price is: {{price | currency:'INR'}}</p>
+    </div>
+    
    
  
 </body>
